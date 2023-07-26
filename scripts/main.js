@@ -2,6 +2,7 @@ let bookmarkName = document.getElementById('bookmark-name');
 let bookmarkURL = document.getElementById('bookmark-url');
 let submit = document.getElementById('submit');
 let tableBody = document.getElementById('tbody');
+
 // console.log(bookmarkName, bookmarkURL);
 
 // #Create new bookmark
@@ -39,12 +40,12 @@ function clearInputs() {
 // #Add the data to the html
 
 function addHtml() {
-  let table;
+  let table = '';
 
   for (let i = 0; i < bookmarkData.length; i++) {
-    console.log(bookmarkData[i]);
+    // console.log(bookmarkData[i]);
 
-    tableBody.innerHTML += `
+    table += `
         <tr>
             <td>${i + 1}</td>
             <td>${bookmarkData[i].bookmarkName}</td>
@@ -52,8 +53,20 @@ function addHtml() {
               bookmarkData[i].bookmarkURL
             }" target="_blank">visit</a></td>
             <td><button class="btn btn-info btn-sm">Update</button></td>
-            <td><button class="btn btn-danger btn-sm">Delete</button></td>
+            <td><button onclick="deleteBookmark(${i})" class="btn btn-danger btn-sm">Delete</button></td>
         </tr>
     `;
   }
+  tableBody.innerHTML = table;
+}
+
+addHtml();
+
+// #delete the bookmark
+
+function deleteBookmark(index) {
+  bookmarkData.splice(index, 1);
+  localStorage.bookmarks = JSON.stringify(bookmarkData);
+
+  addHtml();
 }
