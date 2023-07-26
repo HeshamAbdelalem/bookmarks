@@ -1,25 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/main.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles/main.css" />
     <title>Bookmarks</title>
-</head>
-<body>
+  </head>
+  <body>
+    <main class="vh-100 container">
+      <div class="head text-center mb-4 pb-4">
+        <h1 class="d-inline-block">Bookmarker</h1>
+      </div>
 
-    <main class="vh-100 d-flex justify-content-center">
-        <div class="head">
-            <h1>Bookmarker</h1>
-
+      <div class="inputs p-4">
+        <h2 class="text-center p-4">📑 Bookmark your favorite sites 📑</h2>
+        <div class="inputs-fields d-flex flex-column">
+          <label for="bookmark-name" class="my-1">📔 Site Name</label>
+          <input
+            type="text"
+            name=""
+            id="bookmark-name"
+            class="p-1 mb-3 focus-ring focus-ring-success"
+            placeholder="Bookmark Name"
+            required
+          />
+          <label for="bookmark-url" class="my-1"> 🔖 Site URL</label>
+          <input
+            type="text"
+            name=""
+            id="bookmark-url"
+            class="p-1 mb-3 focus-ring focus-ring-success"
+            placeholder="Website URL"
+            required
+          />
+          <button class="btn btn-success w-50 mx-auto" id="submit">
+            Add Bookmark
+          </button>
         </div>
-        <div class="inputs"></div>
-        <div class="outputs"></div>
+      </div>
+
+      <div class="outputs py-4 mt-4">
+        <table class="table table-danger">
+          <thead>
+            <tr>
+              <th>Index</th>
+              <th>Website Name</th>
+              <th>Visit</th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
     </main>
-    
 
     <script src="scripts/bootstrap.min.js"></script>
     <script src="scripts/main.js"></script>
-</body>
+  </body>
 </html>
