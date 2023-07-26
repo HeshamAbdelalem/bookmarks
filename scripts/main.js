@@ -2,6 +2,7 @@ let bookmarkName = document.getElementById('bookmark-name');
 let bookmarkURL = document.getElementById('bookmark-url');
 let submit = document.getElementById('submit');
 let tableBody = document.getElementById('tbody');
+let btnDeleteAll = document.getElementById('delete-all');
 
 // console.log(bookmarkName, bookmarkURL);
 
@@ -58,6 +59,12 @@ function addHtml() {
     `;
   }
   tableBody.innerHTML = table;
+
+  if (bookmarkData.length) {
+    btnDeleteAll.innerHTML = `<button class="btn btn-danger w-100 my-3" onclick="deleteAll()">Delete All</button>`;
+  } else {
+    btnDeleteAll.innerHTML = ``;
+  }
 }
 
 addHtml();
@@ -68,5 +75,13 @@ function deleteBookmark(index) {
   bookmarkData.splice(index, 1);
   localStorage.bookmarks = JSON.stringify(bookmarkData);
 
+  addHtml();
+}
+
+// #delete all
+
+function deleteAll() {
+  localStorage.clear();
+  bookmarkData.splice(0);
   addHtml();
 }
